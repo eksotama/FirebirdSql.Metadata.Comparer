@@ -1,0 +1,6 @@
+language: csharp
+solution: FirebirdSql.Metadata.Comparer.sln
+dotnet: 2.0.0
+dist: trusty
+script:
+ - dotnet restore
