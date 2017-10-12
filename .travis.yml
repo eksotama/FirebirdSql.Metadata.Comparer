@@ -3,7 +3,9 @@ solution: FirebirdSql.Metadata.Comparer.sln
 mono: none
 dotnet: 2.0.0
 dist: trusty
-script:
+install:
  - dotnet restore
+script:
  - dotnet build
- - dotnet test FirebirdSql.Metadata.Comparer.Tests/FirebirdSql.Metadata.Comparer.Tests.csproj
+after_success:
+ - dotnet test FirebirdSql.Metadata.Comparer.Tests/FirebirdSql.Metadata.Comparer.Tests.csproj --logger "trx;LogFileName=testResults.trx"
