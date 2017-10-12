@@ -1,5 +1,12 @@
 image: Visual Studio 2017
+
+before_build:
+- choco install opencover.portable
+- choco install codecov
+
 install:
 - cmd: dotnet restore
+
 test_script:
-- cmd: dotnet test FirebirdSql.Metadata.Comparer.Tests --logger "trx;LogFileName=testResults.trx"
+- OpenCover.Console.exe -register:user -target:"%xunit20%\xunit.console.x86.exe" -targetargs:".\FirebirdSql.Metadata.Comparer.Tests\bin\Debug\FirebirdSql.Metadata.Comparer.Tests.dll -noshadow" -filter:"+[FirebirdSql.Metadata.Comparer.Tests*]*" -output:".\FirebirdSql.MetadataComparer_coverage.xml"
+- codecov -f "FirebirdSql.MetadataComparer_coverage.xml"
