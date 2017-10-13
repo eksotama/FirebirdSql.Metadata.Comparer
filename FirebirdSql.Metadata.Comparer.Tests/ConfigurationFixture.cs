@@ -7,12 +7,14 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using FirebirdSql.Metadata.Comparer.Tests.RdbModel;
+using Xunit.Abstractions;
 
 namespace FirebirdSql.Metadata.Comparer.Tests
 {
     public class ConfigurationFixture
     {
-        public IServiceProvider provider { get; private set; }
+        public string ConnectionString { get; private set; }
+        public IServiceProvider Provider { get; private set; }
 
         public ConfigurationFixture()
         {
@@ -21,10 +23,12 @@ namespace FirebirdSql.Metadata.Comparer.Tests
                .AddJsonFile("appsettings.json")
                .Build();
 
+            ConnectionString = config["Database:ConnectionString"];
+
             IServiceCollection services = new ServiceCollection();
             services.AddEntityFrameworkFirebird()
-                .AddDbContext<FirebirdRdbContext>(opt => opt.UseFirebird(string.Format(config["Database:ConnectionString"], "employee.fdb")));
-            provider = services.BuildServiceProvider();
+                .AddDbContext<FirebirdRdbContext>(opt => opt.UseFirebird(ConnectionString));
+            Provider = services.BuildServiceProvider();
         }
     }
 }

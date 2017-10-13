@@ -12,16 +12,12 @@ namespace FirebirdSql.Metadata.Comparer
 {
     class Program
     {
-        public static IServiceProvider provider;
-
         static void Main(string[] args)
         {
             IConfiguration config = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
                 .AddJsonFile("appsettings.json")
                 .Build();
-
-            Console.ReadKey();
         }
     }
 }

@@ -5,17 +5,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Xunit;
+using Xunit.Abstractions;
 
 namespace FirebirdSql.Metadata.Comparer.Tests.RdbModel
 {
 
     public class IntegrityTests : IClassFixture<ConfigurationFixture>
     {
+        private readonly ITestOutputHelper output;
         FirebirdRdbContext db;
 
-        public IntegrityTests(ConfigurationFixture fixture)
+        public IntegrityTests(ConfigurationFixture fixture, ITestOutputHelper output)
         {
-            db = fixture.provider.GetRequiredService<FirebirdRdbContext>();
+            this.output = output;
+            db = fixture.Provider.GetRequiredService<FirebirdRdbContext>();
+            output.WriteLine(fixture.ConnectionString);
         }
 
         [Fact]
