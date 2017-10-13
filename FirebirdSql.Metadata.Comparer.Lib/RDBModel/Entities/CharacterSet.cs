@@ -6,9 +6,10 @@ using System.Text;
 namespace FirebirdSql.Metadata.Comparer.Lib.RDBModel.Entities
 {
     /// <summary>
+    /// RDB$CHARACTER_SETS names and describes the character sets available in the database.
     /// <see href="https://firebirdsql.org/file/documentation/reference_manuals/fblangref25-en/html/fblangref-appx04-charactersets.html"/>
     /// </summary>
-    public class CharacterSets
+    public class CharacterSet
     {
         /// <summary>
         /// Character set name
@@ -25,7 +26,7 @@ namespace FirebirdSql.Metadata.Comparer.Lib.RDBModel.Entities
         /// <summary>
         /// The number of characters in the set. Not used for existing character sets
         /// </summary>
-        public int NumberOfCharacters { get; set; }
+        public int? NumberOfCharacters { get; set; }
 
         /// <summary>
         /// The name of the default collation sequence for the character set
@@ -36,6 +37,7 @@ namespace FirebirdSql.Metadata.Comparer.Lib.RDBModel.Entities
         /// <summary>
         /// Unique character set identifier
         /// </summary>
+        [Key]
         public short CharacterSetId { get; set; }
 
         /// <summary>

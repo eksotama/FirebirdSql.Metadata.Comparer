@@ -1,11 +1,19 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using EntityFrameworkCore.FirebirdSql.Extensions;
+using EntityFrameworkCore.FirebirdSql.Infrastructure;
+using FirebirdSql.Metadata.Comparer.Lib.RDBModel;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.IO;
+using System.Linq;
 
 namespace FirebirdSql.Metadata.Comparer
 {
     class Program
     {
+        public static IServiceProvider provider;
+
         static void Main(string[] args)
         {
             IConfiguration config = new ConfigurationBuilder()
@@ -13,8 +21,6 @@ namespace FirebirdSql.Metadata.Comparer
                 .AddJsonFile("appsettings.json")
                 .Build();
 
-            Console.WriteLine(config["Database:ConnectionString"]);
-            Console.WriteLine("Hello World!");
             Console.ReadKey();
         }
     }
