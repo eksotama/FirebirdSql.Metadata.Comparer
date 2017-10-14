@@ -5,6 +5,10 @@ using System.Text;
 
 namespace FirebirdSql.Metadata.Comparer.Lib.RDBModel.Entities
 {
+    /// <summary>
+    /// RDB$DATABASE stores basic information about the database. It contains only one record.
+    /// <see href="https://firebirdsql.org/file/documentation/reference_manuals/fblangref25-en/html/fblangref-appx04-database.html"/>
+    /// </summary>
     public class RdbDatabase
     {
         /// <summary>

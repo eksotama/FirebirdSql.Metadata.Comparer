@@ -5,6 +5,10 @@ using System.Text;
 
 namespace FirebirdSql.Metadata.Comparer.Lib.RDBModel.Entities
 {
+    /// <summary>
+    /// RDB$DEPENDENCIES stores the dependencies between database objects.
+    /// <see href="https://firebirdsql.org/file/documentation/reference_manuals/fblangref25-en/html/fblangref-appx04-dependencies.html"/>
+    /// </summary>
     public class RdbDependency
     {
         /// <summary>

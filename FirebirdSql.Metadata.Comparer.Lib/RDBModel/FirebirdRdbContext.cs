@@ -69,12 +69,12 @@ namespace FirebirdSql.Metadata.Comparer.Lib.RDBModel
         /// <summary>
         /// Custom database exceptions
         /// </summary>
-        //public DbSet<RdbException> Exceptions { get; set; }
+        public DbSet<RdbException> Exceptions { get; set; }
 
         /// <summary>
         /// Column and domain definitions, both system and custom
         /// </summary>
-        //public DbSet<RdbField> Fields { get; set; }
+        public DbSet<RdbField> Fields { get; set; }
 
         /// <summary>
         /// Dimensions of array columns
