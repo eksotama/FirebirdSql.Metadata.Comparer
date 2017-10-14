@@ -1,6 +1,7 @@
 ﻿using FirebirdSql.Metadata.Comparer.Lib.RDBModel.Entities;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using Xunit;
 
@@ -59,6 +60,29 @@ namespace FirebirdSql.Metadata.Comparer.Tests.RdbModel
             };
 
             Assert.Equal(expected, testEntity.FieldSubTypeNamed);
+        }
+
+        [Fact]
+        public void SomeRdbFieldsAreNotUserDefined()
+        {
+            Assert.NotEmpty(Set.Where(f => f.FieldName.StartsWith("RDB$") && !f.IsUserDefined));
+        }
+
+        [Fact]
+        public void ThereAreNoneSystemDefinedNonRdbFields()
+        {
+            Assert.Empty(Set.Where(f => !f.FieldName.StartsWith("RDB$") && !f.IsUserDefined));
+        }
+        
+
+        [Fact]
+        public void TimestampNamedSubtypeShouldBeNull()
+        {
+            var testEntity = new RdbField
+            {
+                FieldType = RdbFieldType.TIMESTAMP
+            };
+            Assert.Null(testEntity.FieldSubTypeNamed);
         }
     }
 }

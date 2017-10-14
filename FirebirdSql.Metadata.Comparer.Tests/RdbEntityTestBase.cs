@@ -14,21 +14,21 @@ namespace FirebirdSql.Metadata.Comparer.Tests
     public abstract class RdbEntityTestBase<T> : IClassFixture<ConfigurationFixture> where T : class
     {
         FirebirdRdbContext db;
-        DbSet<T> set;
+        public DbSet<T> Set;
 
         public RdbEntityTestBase(ConfigurationFixture fixture)
         {
             db = fixture.Provider.GetRequiredService<FirebirdRdbContext>();
-            set = db.Set<T>();
-            Assert.NotNull(set);
+            Set = db.Set<T>();
+            Assert.NotNull(Set);
         }
 
         [Fact]
         public void GetEntityTest()
         {
-            if (set.Count() > 0)
+            if (Set.Count() > 0)
             {
-                var element = set.First();
+                var element = Set.First();
                 Assert.NotNull(element);
             }
         }

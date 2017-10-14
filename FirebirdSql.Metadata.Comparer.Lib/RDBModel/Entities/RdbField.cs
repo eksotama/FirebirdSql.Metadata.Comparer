@@ -120,7 +120,7 @@ namespace FirebirdSql.Metadata.Comparer.Lib.RDBModel.Entities
         /// <summary>
         /// Flag: the value of 1 means the domain is automatically created by the system, the value of 0 means that the domain is defined by the user
         /// </summary>
-        private short SystemFlag { get; set; }
+        public short SystemFlag { get; set; }
 
         [NotMapped]
         public bool IsUserDefined
@@ -195,7 +195,7 @@ namespace FirebirdSql.Metadata.Comparer.Lib.RDBModel.Entities
         {
             get
             {
-                return CollationId != 0;
+                return (CollationId ?? 0) != 0;
             }
         }
 
@@ -203,6 +203,14 @@ namespace FirebirdSql.Metadata.Comparer.Lib.RDBModel.Entities
         /// The identifier of the character set for a character column, BLOB TEXT column or domain
         /// </summary>
         public short? CharacterSetId { get; set; }
+
+        public bool IsCharacterSetDefined
+        {
+            get
+            {
+                return (CharacterSetId ?? 0) != 0;
+            }
+        }
 
         /// <summary>
         /// Specifies the total number of digits for the fixed-point numeric data type (DECIMAL and NUMERIC). The value is 0 for the integer data types, NULL is for other data types
