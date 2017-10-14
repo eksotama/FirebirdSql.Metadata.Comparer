@@ -11,5 +11,5 @@ install:
 - dotnet restore
 
 test_script:
-- OpenCover.Console.exe -register:user -target:"C:/Program Files/dotnet/dotnet.exe" -targetargs:"test FirebirdSql.Metadata.Comparer.Tests/FirebirdSql.Metadata.Comparer.Tests.csproj --logger=trx" -output:".\FirebirdSql.MetadataComparer_coverage.xml"
-- codecov -f "FirebirdSql.MetadataComparer_coverage.xml"
+- OpenCover.Console.exe -register:user -target:"C:/Program Files/dotnet/dotnet.exe" -targetargs:"test FirebirdSql.Metadata.Comparer.Tests/FirebirdSql.Metadata.Comparer.Tests.csproj --logger=trx" -filter:"+[FirebirdSql.Metadata.*]* -[FirebirdSql.Metadata.Comparer.Tests]*" -oldstyle -output:"coverage.xml"
+- codecov -f "coverage.xml"

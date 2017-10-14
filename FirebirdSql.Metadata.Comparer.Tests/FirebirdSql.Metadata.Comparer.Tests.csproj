@@ -7,9 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="dotnet-opencover" Version="0.1.2" />
     <PackageReference Include="EntityFrameworkCore.FirebirdSql" Version="2.0.8" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="2.0.0" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.3.0" />
+    <PackageReference Include="OpenCover" Version="4.6.519" />
     <PackageReference Include="xunit" Version="2.3.0" />
     <PackageReference Include="xunit.extensibility.execution" Version="2.3.0" />
     <PackageReference Include="xunit.runner.console" Version="2.3.0" />
