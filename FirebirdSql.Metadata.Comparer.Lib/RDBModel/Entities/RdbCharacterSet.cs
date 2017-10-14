@@ -9,7 +9,7 @@ namespace FirebirdSql.Metadata.Comparer.Lib.RDBModel.Entities
     /// RDB$CHARACTER_SETS names and describes the character sets available in the database.
     /// <see href="https://firebirdsql.org/file/documentation/reference_manuals/fblangref25-en/html/fblangref-appx04-charactersets.html"/>
     /// </summary>
-    public class CharacterSet
+    public class RdbCharacterSet
     {
         /// <summary>
         /// Character set name
@@ -43,7 +43,7 @@ namespace FirebirdSql.Metadata.Comparer.Lib.RDBModel.Entities
         /// <summary>
         /// System flag: value is 1 if the character set is defined in the system when the database is created; value is 0 for a user-defined character set
         /// </summary>
-        public short SystemFlag { get; set; }
+        public bool SystemFlag { get; set; }
 
         /// <summary>
         /// Could store text description of the character set

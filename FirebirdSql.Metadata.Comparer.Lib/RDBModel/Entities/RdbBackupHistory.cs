@@ -10,7 +10,7 @@ namespace FirebirdSql.Metadata.Comparer.Lib.RDBModel.Entities
     /// RDB$BACKUP_HISTORY stores the history of backups performed using the nBackup utility.
     /// <see href="https://firebirdsql.org/file/documentation/reference_manuals/fblangref25-en/html/fblangref-appx04-backuphistory.html"/>
     /// </summary>
-    public class BackupHistory
+    public class RdbBackupHistory
     {
         /// <summary>
         /// The identifier assigned by the engine
