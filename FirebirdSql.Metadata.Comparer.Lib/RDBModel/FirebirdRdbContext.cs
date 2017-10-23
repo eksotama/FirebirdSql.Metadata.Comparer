@@ -25,6 +25,7 @@ namespace FirebirdSql.Metadata.Comparer.Lib.RDBModel
             modelBuilder.Entity<RdbCollation>().HasKey(k => new { k.CollationId, k.CharacterSetId });
             modelBuilder.Entity<RdbDependency>().HasKey(k => new { k.DependentName, k.DependedOnName });
             modelBuilder.Entity<RdbFunctionArgument>().HasKey(k => new { k.FunctionName, k.ArgumentPosition });
+            modelBuilder.Entity<RdbIndexSegment>().HasKey(k => new { k.IndexName, k.FieldName, k.FieldPosition });
 
             foreach (var entity in modelBuilder.Model.GetEntityTypes())
             {
@@ -112,17 +113,17 @@ namespace FirebirdSql.Metadata.Comparer.Lib.RDBModel
         /// <summary>
         /// Information about generators (sequences)
         /// </summary>
-        //public DbSet<RdbGenerator> Generators { get; set; }
-
-        /// <summary>
-        /// Segments and index positions
-        /// </summary>
-        //public DbSet<RdbIndexSegment> IndexSegments { get; set; }
+        public DbSet<RdbGenerator> Generators { get; set; }
 
         /// <summary>
         /// Definitions of all indexes in the database (system- or user-defined)
         /// </summary>
-        //public DbSet<RdbIndex> Indices { get; set; }
+        public DbSet<RdbIndex> Indices { get; set; }
+
+        /// <summary>
+        /// Segments and index positions
+        /// </summary>
+        public DbSet<RdbIndexSegment> IndexSegments { get; set; }
 
         /// <summary>
         /// Not used in the current version
@@ -132,17 +133,17 @@ namespace FirebirdSql.Metadata.Comparer.Lib.RDBModel
         /// <summary>
         /// Information about database pages
         /// </summary>
-        //public DbSet<RdbPage> Pages { get; set; }
+        public DbSet<RdbPage> Pages { get; set; }
+
+        /// <summary>
+        /// Definitions of stored procedures
+        /// </summary>
+        public DbSet<RdbProcedure> Procedures { get; set; }
 
         /// <summary>
         /// Parameters of stored procedures
         /// </summary>
         //public DbSet<RdbProcedureParameter> ProcedureParameters { get; set; }
-
-        /// <summary>
-        /// Definitions of stored procedures
-        /// </summary>
-        //public DbSet<RdbProcedure> Procedures { get; set; }
 
         /// <summary>
         /// Definitions of referential constraints (foreign keys)

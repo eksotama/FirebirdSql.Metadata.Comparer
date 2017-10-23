@@ -23,7 +23,7 @@ namespace FirebirdSql.Metadata.Comparer.Lib.RDBModel.Entities
         /// <summary>
         /// Not currently used
         /// </summary>
-        public short FunctionType { get; set; }
+        public short? FunctionType { get; set; }
 
         /// <summary>
         /// Not currently used
@@ -34,7 +34,7 @@ namespace FirebirdSql.Metadata.Comparer.Lib.RDBModel.Entities
         /// <summary>
         /// Any text with comments related to the external function
         /// </summary>
-        public string Descriptor { get; set; }
+        public string Description { get; set; }
 
         /// <summary>
         /// The name of the dynamic library or shared object where the code of the external function is located
