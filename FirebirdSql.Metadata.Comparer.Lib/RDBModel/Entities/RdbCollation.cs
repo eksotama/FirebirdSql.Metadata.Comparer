@@ -35,12 +35,12 @@ namespace FirebirdSql.Metadata.Comparer.Lib.RDBModel.Entities
         /// the third bit shows whether the collation is accent-sensitive (0 - ACCENT SENSITIVE, 1 - ACCENT SENSITIVE). 
         /// Thus, the value of 5 means that the collation does not take into account trailing spaces and is accent-insensitive
         /// </summary>
-        public RdbCollationAttributes CollationAttributes { get; set; }
+        public short CollationAttributes { get; set; }
 
         /// <summary>
         /// Flag: the value of 0 means it is user-defined; the value of 1 means it is system-defined
         /// </summary>
-        public bool SystemFlag { get; set; }
+        public short SystemFlag { get; set; }
 
         /// <summary>
         /// Could store text description of the collation sequence
@@ -63,22 +63,5 @@ namespace FirebirdSql.Metadata.Comparer.Lib.RDBModel.Entities
         /// Describes specific attributes
         /// </summary>
         public string SpecificAttributes { get; set; }
-    }
-    [Flags]
-    public enum RdbCollationAttributes
-    {
-        None = 0,
-        /// <summary>
-        /// Trailing spaces should be taken into account in collations
-        /// </summary>
-        PadSpace = 1,
-        /// <summary>
-        /// Collation is case-sensitive
-        /// </summary>
-        CaseInsensitive = 2,
-        /// <summary>
-        /// Collation is accent-sensitive
-        /// </summary>
-        AccentSensitive = 4
     }
 }

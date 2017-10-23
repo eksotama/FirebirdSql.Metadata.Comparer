@@ -71,36 +71,12 @@ namespace FirebirdSql.Metadata.Comparer.Lib.RDBModel.Entities
         /// <summary>
         /// Data type code for the column
         /// </summary>
-        public RdbFieldType FieldType { get; set; }
+        public short FieldType { get; set; }
 
         /// <summary>
         /// Specifies the subtype
         /// </summary>
         public short? FieldSubType { get; set; }
-
-        /// <summary>
-        /// Evaluate subtype enum based on base field type
-        /// </summary>
-        [NotMapped]
-        public dynamic FieldSubTypeNamed
-        {
-            get
-            {
-                switch (FieldType)
-                {
-                    case RdbFieldType.BLOB:
-                        return (RdbFieldBlobSubtype)FieldSubType;
-                    case RdbFieldType.CHAR:
-                        return (RdbFieldCharSubtype)FieldSubType;
-                    case RdbFieldType.SMALLINT:
-                    case RdbFieldType.INTEGER:
-                    case RdbFieldType.BIGINT:
-                        return (RdbFieldIntegerSubtype)(FieldSubType ?? 0);
-                    default:
-                        return null;
-                }
-            }
-        }
 
         /// <summary>
         /// Not used
@@ -121,15 +97,6 @@ namespace FirebirdSql.Metadata.Comparer.Lib.RDBModel.Entities
         /// Flag: the value of 1 means the domain is automatically created by the system, the value of 0 means that the domain is defined by the user
         /// </summary>
         public short SystemFlag { get; set; }
-
-        [NotMapped]
-        public bool IsUserDefined
-        {
-            get
-            {
-                return SystemFlag == 0;
-            }
-        }
 
         /// <summary>
         /// Not used
@@ -160,7 +127,7 @@ namespace FirebirdSql.Metadata.Comparer.Lib.RDBModel.Entities
         /// <summary>
         /// The data type of the field as it is represented in an external table
         /// </summary>
-        public RdbFieldType? ExternalType { get; set; }
+        public short? ExternalType { get; set; }
 
         /// <summary>
         /// Defines the number of dimensions in an array if the column is defined as an array. Always NULL for columns that are not arrays
@@ -172,15 +139,6 @@ namespace FirebirdSql.Metadata.Comparer.Lib.RDBModel.Entities
         /// </summary>
         public short? NullFlag { get; set; }
 
-        [NotMapped]
-        public bool IsNullable
-        {
-            get
-            {
-                return NullFlag == null;
-            }
-        }
-
         /// <summary>
         /// The length of CHAR or VARCHAR columns in characters (not in bytes)
         /// </summary>
@@ -191,69 +149,14 @@ namespace FirebirdSql.Metadata.Comparer.Lib.RDBModel.Entities
         /// </summary>
         public short? CollationId { get; set; }
 
-        public bool IsCollationDefined
-        {
-            get
-            {
-                return (CollationId ?? 0) != 0;
-            }
-        }
-
         /// <summary>
         /// The identifier of the character set for a character column, BLOB TEXT column or domain
         /// </summary>
         public short? CharacterSetId { get; set; }
 
-        public bool IsCharacterSetDefined
-        {
-            get
-            {
-                return (CharacterSetId ?? 0) != 0;
-            }
-        }
-
         /// <summary>
         /// Specifies the total number of digits for the fixed-point numeric data type (DECIMAL and NUMERIC). The value is 0 for the integer data types, NULL is for other data types
         /// </summary>
         public short? FieldPrecision { get; set; }
-    }
-
-    public enum RdbFieldType
-    {
-        SMALLINT = 7,
-        INTEGER = 8,
-        FLOAT = 10,
-        DATE = 12,
-        TIME = 13,
-        CHAR = 14,
-        BIGINT = 16,
-        DOUBLE_PRECISION = 27,
-        TIMESTAMP = 35,
-        VARCHAR = 37,
-        BLOB = 261
-    }
-
-    public enum RdbFieldBlobSubtype
-    {
-        UNTYPED = 0,
-        TEXT,
-        BLR,
-        ACCESS_CONTROL_LIST,
-        RESERVED,
-        ENCODED_TABLE_METADATA_DESCRIPTION,
-        CROSS_DATABASE_TRANSACTION_DETAILS
-    }
-
-    public enum RdbFieldCharSubtype
-    {
-        UNTYPED = 0,
-        BINARY
-    }
-
-    public enum RdbFieldIntegerSubtype
-    {
-        SELF = 0,
-        NUMERIC,
-        DECIMAL
     }
 }

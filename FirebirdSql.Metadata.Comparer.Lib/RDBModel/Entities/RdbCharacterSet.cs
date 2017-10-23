@@ -43,7 +43,7 @@ namespace FirebirdSql.Metadata.Comparer.Lib.RDBModel.Entities
         /// <summary>
         /// System flag: value is 1 if the character set is defined in the system when the database is created; value is 0 for a user-defined character set
         /// </summary>
-        public bool SystemFlag { get; set; }
+        public short SystemFlag { get; set; }
 
         /// <summary>
         /// Could store text description of the character set

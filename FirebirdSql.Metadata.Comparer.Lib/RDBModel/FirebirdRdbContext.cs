@@ -20,8 +20,11 @@ namespace FirebirdSql.Metadata.Comparer.Lib.RDBModel
         {
             base.OnModelCreating(modelBuilder);
 
+            modelBuilder.Entity<RdbDatabase>().ToTable("Database");
+
             modelBuilder.Entity<RdbCollation>().HasKey(k => new { k.CollationId, k.CharacterSetId });
             modelBuilder.Entity<RdbDependency>().HasKey(k => new { k.DependentName, k.DependedOnName });
+            modelBuilder.Entity<RdbFunctionArgument>().HasKey(k => new { k.FunctionName, k.ArgumentPosition });
 
             foreach (var entity in modelBuilder.Model.GetEntityTypes())
             {
@@ -59,7 +62,7 @@ namespace FirebirdSql.Metadata.Comparer.Lib.RDBModel
         /// <summary>
         /// Basic information about the database
         /// </summary>
-        public DbSet<RdbDatabase> Database { get; set; }
+        public DbSet<RdbDatabase> RdbDatabase { get; set; }
 
         /// <summary>
         /// Information about dependencies between database objects
@@ -79,32 +82,32 @@ namespace FirebirdSql.Metadata.Comparer.Lib.RDBModel
         /// <summary>
         /// Dimensions of array columns
         /// </summary>
-        //public DbSet<RdbFieldDimension> FieldDimensions { get; set; }
+        public DbSet<RdbFieldDimension> FieldDimensions { get; set; }
 
         /// <summary>
         /// Information about secondary files and shadow files
         /// </summary>
-        //public DbSet<RdbFile> Files { get; set; }
+        public DbSet<RdbFile> Files { get; set; }
 
         /// <summary>
         /// Information about BLOB filters
         /// </summary>
-        //public DbSet<RdbFilter> Filters { get; set; }
+        public DbSet<RdbFilter> Filters { get; set; }
 
         /// <summary>
         /// Information about changes in the formats of tables
         /// </summary>
-        //public DbSet<RdbFormat> Formats { get; set; }
+        public DbSet<RdbFormat> Formats { get; set; }
 
         /// <summary>
         /// Information about external functions
         /// </summary>
-        //public DbSet<RdbFunction> Functions { get; set; }
+        public DbSet<RdbFunction> Functions { get; set; }
 
         /// <summary>
         /// Attributes of the parameters of external functions
         /// </summary>
-        //public DbSet<RdbFunctionArgument> FunctionArguments { get; set; }
+        public DbSet<RdbFunctionArgument> FunctionArguments { get; set; }
 
         /// <summary>
         /// Information about generators (sequences)

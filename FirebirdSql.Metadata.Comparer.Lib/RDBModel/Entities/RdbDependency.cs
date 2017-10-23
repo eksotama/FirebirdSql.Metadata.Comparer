@@ -32,29 +32,11 @@ namespace FirebirdSql.Metadata.Comparer.Lib.RDBModel.Entities
         /// <summary>
         /// Identifies the type of the dependent object
         /// </summary>
-        public DependencyType DependentType { get; set; }
+        public short DependentType { get; set; }
 
         /// <summary>
         /// Identifies the type of the object depended on
         /// </summary>
-        public DependencyType DependedOnType { get; set; }
-    }
-
-    public enum DependencyType
-    {
-        Table = 0,
-        View = 1,
-        Trigger = 2,
-        ComputedColumn = 3,
-        CheckConstraint = 4,
-        Procedure = 5,
-        IndexExpression = 6,
-        Exception = 7,
-        User = 8,
-        Column = 9,
-        Index = 10,
-        Generator = 14,
-        UDF = 15,
-        Collation = 17
+        public short DependedOnType { get; set; }
     }
 }

@@ -35,6 +35,6 @@ namespace FirebirdSql.Metadata.Comparer.Lib.RDBModel.Entities
         /// user-defined = 0
         /// system-defined = 1 or higher
         /// </summary>
-        public bool SystemFlag { get; set; }
+        public short SystemFlag { get; set; }
     }
 }
