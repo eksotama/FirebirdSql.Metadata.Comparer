@@ -26,6 +26,8 @@ namespace FirebirdSql.Metadata.Comparer.Lib.RDBModel
             modelBuilder.Entity<RdbDependency>().HasKey(k => new { k.DependentName, k.DependedOnName });
             modelBuilder.Entity<RdbFunctionArgument>().HasKey(k => new { k.FunctionName, k.ArgumentPosition });
             modelBuilder.Entity<RdbIndexSegment>().HasKey(k => new { k.IndexName, k.FieldName, k.FieldPosition });
+            modelBuilder.Entity<RdbProcedureParameter>().HasKey(k => new { k.ProcedureName, k.ParameterName });
+            modelBuilder.Entity<RdbRelationField>().HasKey(k => new { k.RelationName, k.FieldName });
 
             foreach (var entity in modelBuilder.Model.GetEntityTypes())
             {
@@ -143,27 +145,27 @@ namespace FirebirdSql.Metadata.Comparer.Lib.RDBModel
         /// <summary>
         /// Parameters of stored procedures
         /// </summary>
-        //public DbSet<RdbProcedureParameter> ProcedureParameters { get; set; }
+        public DbSet<RdbProcedureParameter> ProcedureParameters { get; set; }
 
         /// <summary>
         /// Definitions of referential constraints (foreign keys)
         /// </summary>
-        //public DbSet<RdbRefConstraint> RefConstraints { get; set; }
+        public DbSet<RdbRefConstraint> RefConstraints { get; set; }
 
         /// <summary>
         /// Definitions of all table-level constraints
         /// </summary>
-        //public DbSet<RdbRelationConstraint> RelationConstraints { get; set; }
+        public DbSet<RdbRelationConstraint> RelationConstraints { get; set; }
 
         /// <summary>
         /// Top-level definitions of table columns
         /// </summary>
-        //public DbSet<RdbRelationField> RelationFields { get; set; }
+        public DbSet<RdbRelationField> RelationFields { get; set; }
 
         /// <summary>
         /// Headers of tables and views
         /// </summary>
-        //public DbSet<RdbRelation> Relations { get; set; }
+        public DbSet<RdbRelation> Relations { get; set; }
 
         /// <summary>
         /// Role definitions
