@@ -28,6 +28,8 @@ namespace FirebirdSql.Metadata.Comparer.Lib.RDBModel
             modelBuilder.Entity<RdbIndexSegment>().HasKey(k => new { k.IndexName, k.FieldName, k.FieldPosition });
             modelBuilder.Entity<RdbProcedureParameter>().HasKey(k => new { k.ProcedureName, k.ParameterName });
             modelBuilder.Entity<RdbRelationField>().HasKey(k => new { k.RelationName, k.FieldName });
+            modelBuilder.Entity<RdbUserPrivilege>().HasKey(k => new { k.User, k.Grantor, k.Privilege, k.RelationName });
+            modelBuilder.Entity<RdbViewRelation>().HasKey(k => new { k.ViewName, k.RelationName });
 
             foreach (var entity in modelBuilder.Model.GetEntityTypes())
             {
@@ -170,41 +172,41 @@ namespace FirebirdSql.Metadata.Comparer.Lib.RDBModel
         /// <summary>
         /// Role definitions
         /// </summary>
-        //public DbSet<RdbRole> Roles { get; set; }
+        public DbSet<RdbRole> Roles { get; set; }
 
         /// <summary>
         /// Access control lists
         /// </summary>
-        //public DbSet<RdbSecurityClass> SecurityClasses { get; set; }
+        public DbSet<RdbSecurityClass> SecurityClasses { get; set; }
 
         /// <summary>
         /// State of multi-database transactions
         /// </summary>
-        //public DbSet<RdbTransaction> Transactions { get; set; }
+        public DbSet<RdbTransaction> Transactions { get; set; }
 
         /// <summary>
         /// Trigger messages
         /// </summary>
-        //public DbSet<RdbTriggerMessage> TriggerMessages { get; set; }
+        public DbSet<RdbTriggerMessage> TriggerMessages { get; set; }
 
         /// <summary>
         /// Trigger definitions
         /// </summary>
-        //public DbSet<RdbTrigger> Triggers { get; set; }
+        public DbSet<RdbTrigger> Triggers { get; set; }
 
         /// <summary>
         /// Definitions of enumerated data types
         /// </summary>
-        //public DbSet<RdbType> Types { get; set; }
+        public DbSet<RdbType> Types { get; set; }
 
         /// <summary>
         /// SQL privileges granted to system users
         /// </summary>
-        //public DbSet<RdbUserPrivilege> UserPrivileges { get; set; }
+        public DbSet<RdbUserPrivilege> UserPrivileges { get; set; }
 
         /// <summary>
         /// Tables that are referred to in view definitions: one record for each table in a view
         /// </summary>
-        //public DbSet<RdbViewRelation> ViewRelations { get; set; }
+        public DbSet<RdbViewRelation> ViewRelations { get; set; }
     }
 }
