@@ -69,7 +69,7 @@ namespace FirebirdSql.Metadata.Comparer.Lib.RDBModel.Entities
         /// <summary>
         /// The flag indicating whether NULL is allowable
         /// </summary>
-        public short NullFlag { get; set; }
+        public short? NullFlag { get; set; }
 
         /// <summary>
         /// Flag: indicates how this parameter is passed:

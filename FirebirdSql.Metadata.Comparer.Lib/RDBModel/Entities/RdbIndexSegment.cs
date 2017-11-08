@@ -31,6 +31,6 @@ namespace FirebirdSql.Metadata.Comparer.Lib.RDBModel.Entities
         /// <summary>
         /// The last known (calculated) selectivity of this column in the index. The higher the number, the lower the selectivity.
         /// </summary>
-        public double Statistics { get; set; }
+        public double? Statistics { get; set; }
     }
 }

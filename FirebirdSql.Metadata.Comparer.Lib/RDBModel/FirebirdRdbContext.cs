@@ -1,10 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using FirebirdSql.Metadata.Comparer.Lib.RDBModel.Entities;
+using Microsoft.EntityFrameworkCore;
 using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Linq;
-using FirebirdSql.Metadata.Comparer.Lib.RDBModel.Entities;
-using EntityFrameworkCore.FirebirdSql.Extensions;
 
 namespace FirebirdSql.Metadata.Comparer.Lib.RDBModel
 {

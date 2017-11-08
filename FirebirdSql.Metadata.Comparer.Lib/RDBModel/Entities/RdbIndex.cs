@@ -89,6 +89,6 @@ namespace FirebirdSql.Metadata.Comparer.Lib.RDBModel.Entities
         /// It is also recalculated whenever the database is first opened by the server. 
         /// The selectivity of each separate segment of the index is stored in RDB$INDEX_SEGMENTS.
         /// </summary>
-        public double Statistics { get; set; }
+        public double? Statistics { get; set; }
     }
 }
